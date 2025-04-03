@@ -1,5 +1,7 @@
 package com.Obsqura.rmartSupermarket.Testscript;
 
+import java.io.IOException;
+
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
@@ -8,6 +10,7 @@ import org.testng.annotations.Test;
 import com.Obsqura.rmartSupermarket.Constant.Constant;
 import com.Obsqura.rmartSupermarket.pages.HomePage;
 import com.Obsqura.rmartSupermarket.pages.LoginPage;
+import com.Obsqura.rmartSupermarket.utilities.ExcelDataUtility;
 
 public class LoginPageTest extends Base {
 	public HomePage homepage;
@@ -32,9 +35,11 @@ public class LoginPageTest extends Base {
 	}
 
 	@Test
-	public void verifyvalidusernameandinvalidpassword() {
+	public void verifyvalidusernameandinvalidpassword() throws IOException {
 		LoginPage loginpage = new LoginPage(driver);
-		loginpage.enterusernameandpassword("admin", "abc");
+		String username = ExcelDataUtility.getStringdata(1, 0, "Loginpage");
+		String password = ExcelDataUtility.getStringdata(1, 1, "Loginpage");
+		loginpage.enterusernameandpassword(username, password);
 		homepage = loginpage.clickonsignin();
 
 		boolean isalert = loginpage.isAlertDisplayed();
@@ -42,9 +47,11 @@ public class LoginPageTest extends Base {
 	}
 
 	@Test
-	public void verifyinvalidusernameandpassword() {
+	public void verifyinvalidusernameandpassword() throws IOException {
 		LoginPage loginpage = new LoginPage(driver);
-		loginpage.enterusernameandpassword("suru", "string");
+		String username = ExcelDataUtility.getStringdata(2, 0, "Loginpage");
+		String password = ExcelDataUtility.getStringdata(2, 1,"Loginpage");
+		loginpage.enterusernameandpassword(username, password);
 		homepage = loginpage.clickonsignin();
 	}
 

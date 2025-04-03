@@ -24,10 +24,38 @@ public class HomePage {
 	WebElement category;
 	@FindBy(xpath = "//p[text()='Manage News']")
 	WebElement managenews;
-	@FindBy(xpath = "//p[text()='Sub Category']")
+	@FindBy(xpath = "(//a[@class='small-box-footer'])[4]")
 	WebElement subcategory;
 	@FindBy(xpath = "//p[text() = 'Manage Footer Text']")
 	WebElement managefootertext;
+	@FindBy(xpath = "//p[text()='Manage Contact']")
+	WebElement managecontact;
+	@FindBy(xpath = "(//a[@class=' nav-link'])[3]")
+	WebElement settingsmenu;
+	@FindBy(xpath = "(//a[@class=' nav-link'])[4]")
+	WebElement managemenu;
+	@FindBy(xpath = "//p[text()='Manage Product']")
+	WebElement manageproductmenu;
+
+	public ManageProduct clickOnManageProduct() {
+		manageproductmenu.click();
+		return new ManageProduct(driver);
+	}
+
+	public SettingsPage clickOnSettings() {
+		settingsmenu.click();
+		return new SettingsPage(driver);
+	}
+
+	public SettingsPage clickOnManageMenu() {
+		managemenu.click();
+		return new SettingsPage(driver);
+	}
+
+	public ManageContactPage clickOnManageContact() {
+		managecontact.click();
+		return new ManageContactPage(driver);
+	}
 
 	public AdminUser clickonAdminUserInfo() {
 		admininfo.click();
@@ -48,6 +76,7 @@ public class HomePage {
 		subcategory.click();
 		return new SubCategoryPage(driver);
 	}
+
 	public ManageFooterTextPage clickOnManageFooterText() {
 		managefootertext.click();
 		return new ManageFooterTextPage(driver);

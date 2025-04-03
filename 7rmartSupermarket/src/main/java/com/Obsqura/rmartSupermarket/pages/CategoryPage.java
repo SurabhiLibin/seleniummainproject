@@ -16,6 +16,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.Obsqura.rmartSupermarket.Constant.Constant;
+import com.Obsqura.rmartSupermarket.utilities.FileUploadUtility;
 import com.Obsqura.rmartSupermarket.utilities.PageUtility;
 
 public class CategoryPage {
@@ -41,6 +43,12 @@ public class CategoryPage {
 	WebElement leftmenu;
 	@FindBy(xpath = "//button[@name='create']")
 	WebElement savebutton;
+	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
+	WebElement successalert;
+	
+	public boolean alertsuccess() {
+		return successalert.isDisplayed();
+	}
 
 	public CategoryPage clickNew() {
 		newbutton.click();
@@ -50,38 +58,28 @@ public class CategoryPage {
 	public CategoryPage enterCategoryDetails(String category) throws AWTException {
 		categoryfield.sendKeys(category);
 		groupdiscount.click();
-		//JavascriptExecutor executor = (JavascriptExecutor) driver;
-		//executor.executeScript("window.scrollBy(0,6000)");
-		pageutility.javaScriptExecutor(driver, fileupload);
-		fileupload.sendKeys("C:\\\\Users\\\\Dell\\\\Desktop\\\\apple.jpg");
+		
+		FileUploadUtility fileuploadutility = new FileUploadUtility();
+		fileuploadutility.sendkeysForFileUpload(fileupload, Constant.IMAGE);
 		
 		
-		/*StringSelection selection = new StringSelection("\"C:\\Users\\Dell\\Desktop\\apple.jpg\"");
-		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(selection, null);
-
-		Robot robo = new Robot();
-		robo.delay(2500);
-
-		robo.keyPress(KeyEvent.VK_CONTROL);
-		robo.keyPress(KeyEvent.VK_V);
-		robo.keyRelease(KeyEvent.VK_CONTROL);
-		robo.keyRelease(KeyEvent.VK_V);
-		robo.keyPress(KeyEvent.VK_ENTER);
-		robo.keyRelease(KeyEvent.VK_ENTER);*/
-		//pageutility.roboClass(driver, fileupload);
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("window.scrollBy(0,100000)");
+		//pageutility.javaScriptExecutor(driver, topmenu);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(45));
 		wait.until(ExpectedConditions.elementToBeClickable(topmenu));
-		//wait.until(ExpectedConditions.elementToBeSelected(topmenu));
-		//wait.until(ExpectedConditions.elementSelectionStateToBe(topmenu, false));
-		//wait.until(ExpectedConditions.titleContains(categoryfield));
-		//wait.until(ExpectedConditions.invisibilityOf(fileupload));
-	
 		topmenu.click();
+		WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(45));
+		wait1.until(ExpectedConditions.elementToBeClickable(leftmenu));
 		leftmenu.click();
 		return this;
 	}
 
 	public CategoryPage clickOnSave() {
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("window.scrollBy(0,50000)");
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+		wait.until(ExpectedConditions.elementToBeClickable(savebutton));
 		savebutton.click();
 		return this;
 	}

@@ -1,12 +1,17 @@
 package com.Obsqura.rmartSupermarket.Testscript;
 
 import org.testng.annotations.Test;
+
+import com.Obsqura.rmartSupermarket.utilities.ScreenshotUtility;
+
 import org.testng.annotations.BeforeMethod;
 
+import java.io.IOException;
 import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 
 public class Base {
@@ -21,8 +26,15 @@ public class Base {
   }
 
   @AfterMethod
-  public void afterMethod() {
+  public void afterMethod(ITestResult itResult) throws IOException {
 	  
-	  //driver.quit();
+		  if (itResult.getStatus() == ITestResult.FAILURE) {
+			ScreenshotUtility sc = new ScreenshotUtility();
+			sc.captureFailureScreenShot(driver, itResult.getName());
+		}
+		if (driver != null) {
+			driver.quit();
+		}
   }
+
 }

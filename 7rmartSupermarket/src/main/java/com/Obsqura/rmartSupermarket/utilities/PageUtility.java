@@ -28,7 +28,7 @@ public class PageUtility {
 	}
 	public void javaScriptExecutor(WebDriver driver, WebElement element) {
 		JavascriptExecutor executor = (JavascriptExecutor) driver;
-		executor.executeScript("window.scrollBy(0,3000)");
+		executor.executeScript("window.scrollBy(0,400)");
 	}
 	public void roboClass(WebDriver driver, WebElement element) throws AWTException {
 		StringSelection selection = new StringSelection("\"C:\\Users\\Dell\\Desktop\\apple.jpg\"");

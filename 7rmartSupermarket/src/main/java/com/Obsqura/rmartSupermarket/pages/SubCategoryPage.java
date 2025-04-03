@@ -1,5 +1,6 @@
 package com.Obsqura.rmartSupermarket.pages;
 
+import java.awt.AWTException;
 import java.time.Duration;
 
 import org.openqa.selenium.JavascriptExecutor;
@@ -12,12 +13,15 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.Obsqura.rmartSupermarket.Constant.Constant;
+import com.Obsqura.rmartSupermarket.utilities.FileUploadUtility;
+import com.Obsqura.rmartSupermarket.utilities.PageUtility;
 import com.Obsqura.rmartSupermarket.utilities.WaitUtility;
 
 public class SubCategoryPage {
 	public WebDriver driver;
+	PageUtility pageutility = new PageUtility();
 	WaitUtility waitutility = new WaitUtility();
-	
 
 	public SubCategoryPage(WebDriver driver) {
 		this.driver = driver;
@@ -47,9 +51,9 @@ public class SubCategoryPage {
 		Select select = new Select(categoryfield);
 		select.selectByVisibleText(category);
 		subcategoryfield.sendKeys(subcategory);
-		imageupload.sendKeys("C:\\Users\\Dell\\Desktop\\apple.jpg");
-		JavascriptExecutor executor = (JavascriptExecutor) driver;
-		executor.executeScript("window.scrollBy(0,2000)");
+		imageupload.sendKeys(Constant.IMAGE);
+		pageutility.javaScriptExecutor(driver, save);
+		
 		waitutility.elementToBeClickable(driver, save);
 		save.click();
 		return this;

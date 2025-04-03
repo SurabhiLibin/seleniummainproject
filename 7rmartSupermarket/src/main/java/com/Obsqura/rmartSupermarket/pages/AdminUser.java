@@ -12,7 +12,6 @@ import com.Obsqura.rmartSupermarket.utilities.PageUtility;
 public class AdminUser {
 	public WebDriver driver;
 	PageUtility pageutility = new PageUtility();
-	
 
 	public AdminUser(WebDriver driver) {
 		this.driver = driver;
@@ -42,8 +41,8 @@ public class AdminUser {
 
 		newusername.sendKeys(username);
 		newpassword.sendKeys(password);
-        //pageutility.selectByVisibleText(usertypefield, usertype);
-		//pageutility.selectByvalue(usertypefield, usertype);
+        // pageutility.selectByVisibleText(usertypefield, usertype);
+		// pageutility.selectByvalue(usertypefield, usertype);
 		pageutility.selectByIndex(usertypefield, usertype);
 		return this;
 	}
