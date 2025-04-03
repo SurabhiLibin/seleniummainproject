@@ -40,7 +40,6 @@ public class ManageContactPage {
 	WebElement alertmsg;
 
 	public ManageContactPage clickOnAction() {
-		// waitutility.elementToBeClickable(driver, actionbutton);
 		actionbutton.click();
 		return this;
 	}

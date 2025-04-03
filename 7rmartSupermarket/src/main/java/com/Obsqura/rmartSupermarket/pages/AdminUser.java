@@ -41,8 +41,6 @@ public class AdminUser {
 
 		newusername.sendKeys(username);
 		newpassword.sendKeys(password);
-        // pageutility.selectByVisibleText(usertypefield, usertype);
-		// pageutility.selectByvalue(usertypefield, usertype);
 		pageutility.selectByIndex(usertypefield, usertype);
 		return this;
 	}

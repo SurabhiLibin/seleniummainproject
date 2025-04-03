@@ -69,11 +69,7 @@ public class SettingsPage {
 	}
 
 	public SettingsPage clickOnRadiobutton() {
-		//JavascriptExecutor executor = (JavascriptExecutor) driver;
-		//executor.executeScript("window.scrollBy(0,2000)");
 		pageutility.javaScriptExecutor(driver, radiobutton);
-		//WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(35));
-		//wait.until(ExpectedConditions.elementToBeClickable(radiobutton));
 		waitutility.elementToBeClickable(driver, radiobutton);
 		radiobutton.click();
 		return this;

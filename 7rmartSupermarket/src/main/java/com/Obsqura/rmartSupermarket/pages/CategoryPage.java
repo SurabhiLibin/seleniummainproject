@@ -65,7 +65,6 @@ public class CategoryPage {
 		
 		JavascriptExecutor executor = (JavascriptExecutor) driver;
 		executor.executeScript("window.scrollBy(0,100000)");
-		//pageutility.javaScriptExecutor(driver, topmenu);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(45));
 		wait.until(ExpectedConditions.elementToBeClickable(topmenu));
 		topmenu.click();
